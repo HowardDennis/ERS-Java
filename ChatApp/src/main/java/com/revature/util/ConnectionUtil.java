@@ -35,9 +35,9 @@ public class ConnectionUtil {
 		 * public which would violate the security of our database.
 		 */
 		
-		String url = System.getenv("JDBC_URL");
-		String username = System.getenv("JDBC_LOGIN");
-		String password = System.getenv("JDBC_PASSWORD");
+		String url = System.getenv("POSTGRES_URL");
+		String username = System.getenv("POSTGRES_USER");
+		String password = System.getenv("POSTGRES_PASSWORD");
 		Connection connection = DriverManager.getConnection(url, username, password);
 		return connection;
 	}
