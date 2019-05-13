@@ -1,0 +1,51 @@
+<button type="submit" (click)="addReimbursement()" class="myButton">Create New Expense</button>
+<button type="submit" (click)="logout()" class="myButton topright">Log Out</button>
+
+<hr>
+
+<table *ngIf="hope.assignedReimbursements && hope.assignedReimbursements.length">
+  <tr>
+    <th>Amount</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Time Submitted</th>
+    <th>Status</th>
+    <th>Decision</th>
+  </tr>
+  <tr *ngFor="let reimb of hope.assignedReimbursements">
+    <td>{{reimb.reimb_amount}}</td>
+    <td>{{reimb.reimb_type}}</td>
+    <td width="30%">{{reimb.reimb_description}}</td>
+    <td>{{reimb.submit_time}}</td>
+    <td>{{reimb.reimb_status}}</td>
+    <td>
+      <button (click)="approve(reimb)">Approve</button>
+      <button (click)="deny(reimb)">Deny</button>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+<table *ngIf="hope.myReimbursements">
+  <tr>
+    <th>Amount</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Time Submitted</th>
+    <th>Status</th>
+    <th>Financier</th>
+  </tr>
+  <tr *ngFor="let reimb of hope.myReimbursements">
+    <td>{{reimb.reimb_amount}}</td>
+    <td>{{reimb.reimb_type}}</td>
+    <td>{{reimb.reimb_description}}</td>
+    <td>{{reimb.submit_time}}</td>
+    <td>{{reimb.reimb_status}}</td>
+    <td>{{reimb.reimb_resolver}}</td>
+  </tr>
+</table>
+
+<section class="animation-box">
+  <div class="first-text">Welcome, {{hope.name}}</div>
+</section>

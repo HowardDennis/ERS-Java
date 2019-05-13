@@ -1,0 +1,43 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+div {
+    padding: 5px;
+}
+
+div > label, div > input {
+    font-size: 1.5rem;
+}
+
+label, #username, #password {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    width: 10em;
+}
+
+input {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: block;
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
+}
+
+.top {
+    width: 7em;
+    background-color: rgba(253, 253, 255, 0.5);
+}
+
+.popup {
+    display: inline-block;
+    background-color: rgba(253, 253, 255, 0.5);
+}

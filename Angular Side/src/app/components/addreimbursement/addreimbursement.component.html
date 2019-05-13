@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Expense Form</h1>
+    <form>
+          Amount:<br>
+          <input type="number" step=".01" min="0.01" #amount/>
+          <hr>
+          Description:<br>
+          <input type="text"  #description>
+          <hr>
+          Type:<br>
+          <select #type>
+            <option value="Lodging">Lodging</option>
+            <option value="Travel">Travel</option>
+            <option value="Food">Food</option>
+            <option value="Other">Other</option>
+          </select>
+          <hr>
+          <button type="submit" (click) = 'addTodo(amount.value, type.value, description.value)'>Add</button>
+
+    </form>
+</div>

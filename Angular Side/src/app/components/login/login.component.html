@@ -1,0 +1,15 @@
+<h1>Welcome to HD's Reimbursement Website!</h1>
+<h2>Login</h2>
+<hr>
+<div>
+  <p class="popup" *ngIf="lastStatus === 400">Username or password is incorrect.</p>
+  <p class="popup" *ngIf="lastStatus === 500">Unknown server error occurred.</p>
+  <p class="popup" *ngIf="lastStatus === 0">Server unreachable.</p>
+  <label for="username" class="top">Enter Username:</label>
+  <input type="text" id="username" [(ngModel)]="username">
+
+  <label for="password" class="top">Enter Password</label>
+  <input type="password" id="password" [(ngModel)]="password">
+
+  <input type="submit" [disabled]="!formValidation()" (click)="submit()">
+</div>

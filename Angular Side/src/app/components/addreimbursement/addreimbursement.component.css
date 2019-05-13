@@ -1,0 +1,13 @@
+hr {
+    clear: both;
+    visibility: hidden;
+}
+
+form {
+    background-color: aliceblue;
+}
+
+.container {
+    width: 300px;
+    text-align: center;
+}
