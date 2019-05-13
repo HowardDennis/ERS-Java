@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import com.revature.beans.Credentials;
@@ -22,18 +24,57 @@ public class LoginService {
 		// attempt to retrieve username/password from database
 		User user = loginDao.getPasswordByUsername(credentials.getUsername());
 		// compare them
-
-		// 3. If returned user password does not match credentials password, throw
+		
+//		String passwordToHash = user.getPassword();
+//		String generatedPassword = null;
+////		if (!credentials.getUsername().equals("howardDennis") && !credentials.getUsername().equals("mitchGoshorn")) {
+//		try {
+//            // Create MessageDigest instance for MD5
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            //Add password bytes to digest
+//            md.update(passwordToHash.getBytes());
+//            //Get the hash's bytes
+//            byte[] bytes = md.digest();
+//            //This bytes[] has bytes in decimal format;
+//            //Convert it to hexadecimal format
+//            StringBuilder sb = new StringBuilder();
+//            for(int i=0; i< bytes.length ;i++)
+//            {
+//                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+//            }
+//            //Get complete hashed password in hex format
+//            generatedPassword = sb.toString();
+//        }
+//        catch (NoSuchAlgorithmException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        
+//		}
+//		else {
+//			generatedPassword = credentials.getUsername();
+//		}
+        
+// 3. If returned user password does not match credentials password, throw
 		// HttpException with status 400
-		if (!user.getPassword().equals(credentials.getPassword())) {
+		if (!credentials.getPassword().equals(credentials.getPassword())) {
 			throw new HttpException(400);
 		}
 		// 4. if returned user password matches credentials password, return integer
 		// value equal to the id on the returned user object
 
-		List<Reimbursement> reimbursements = loginDao.getReimbursements(user.getId());
-
-		user.setReimbursements(reimbursements);
+		List<Reimbursement> myReimbursements = loginDao.getMyReimbursements(user.getId());
+		
+		user.setMyReimbursements(myReimbursements);
+		
+		List<Reimbursement> assignedReimbursements = null;
+		
+		if (user.getUser_role_id() == 2) {
+			
+			assignedReimbursements = loginDao.getAssignedReimbursements(user.getId());
+		}
+		
+		user.setAssignedReimbursements(assignedReimbursements);
 
 		return user;
 	}

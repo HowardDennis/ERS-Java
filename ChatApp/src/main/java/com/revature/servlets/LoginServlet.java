@@ -39,7 +39,7 @@ public class LoginServlet extends DefaultServlet {
 		response.addHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
 		super.service(request, response);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -60,23 +60,23 @@ public class LoginServlet extends DefaultServlet {
 			return;
 		}
 
-		//HttpSession session = request.getSession();
+		// HttpSession session = request.getSession();
 
-		//session.setAttribute("id", id);
-		
+		// session.setAttribute("id", id);
+
 //		List<List<String>> info = new ArrayList<>();
 //		for(Reimbursement reimb : user.getReimbursements())
 //		{
 //			List<String> reimbStrings = new ArrayList<>();
 //			reimbStrings.add(reim)
 //		}
-		
-		//Set these to null for protection
+
+		// Set these to null for protection
 		user.setPassword("");
 		user.setUsername("");
-		
+
 		String json = om.writeValueAsString(user);
-		
+
 		om.writeValue(response.getWriter(), json);
 	}
 }
